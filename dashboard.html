@@ -1,0 +1,320 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Smart Street Light Dashboard</title>
+
+<link rel="stylesheet" href="dashboard.css">
+
+</head>
+
+
+<body>
+
+
+<div class="container">
+
+
+<h1>💡 Smart Street Light</h1>
+
+<p class="subtitle">
+Smart Street Light Control System
+</p>
+
+
+
+<!-- ================= Control Mode ================= -->
+
+
+<div class="card">
+
+
+<h2>Select Mode</h2>
+
+
+<div class="buttons">
+
+
+<button id="autoBtn">
+🌙 Automatic Mode
+</button>
+
+
+<button id="semiBtn">
+⚡ Semi Automatic Mode
+</button>
+
+
+<button id="manualBtn">
+👨‍💻 Manual Mode
+</button>
+
+
+</div>
+
+
+</div>
+
+
+
+
+<!-- ================= Automatic Mode ================= -->
+
+
+<div class="card" id="autoSection">
+
+
+<h2>Automatic Mode</h2>
+
+
+<p>
+<b>Automatic Street Light Control Using Sensors</b>
+</p>
+
+
+<br>
+
+
+<ul>
+
+
+<li>
+☀️ <b>LDR Sensor 1</b>
+→ Environmental Light Detection
+</li>
+
+
+<br>
+
+
+<li>
+🚶 <b>PIR Sensor</b>
+→ Motion Detection
+</li>
+
+
+<br>
+
+
+<li>
+💡 <b>LDR Sensor 2</b>
+→ Street Light Failure Detection
+</li>
+
+
+</ul>
+
+
+</div>
+
+
+
+
+
+<!-- ================= Semi Automatic Mode ================= -->
+
+
+<div class="card" id="semiSection">
+
+
+<h2>Semi Automatic Mode</h2>
+
+
+<p>
+<b>
+Manual ON/OFF Control + Automatic Brightness Adjustment
+</b>
+</p>
+
+
+<br>
+
+
+<div class="buttons">
+
+
+<button id="semiOn">
+💡 LIGHT ON
+</button>
+
+
+<button id="semiOff">
+⚫ LIGHT OFF
+</button>
+
+
+</div>
+
+
+<br>
+
+
+<p id="pirBrightness">
+
+🚶 Waiting for PIR Sensor...
+
+</p>
+
+
+</div>
+
+
+
+
+
+
+
+<!-- ================= Manual Mode ================= -->
+
+
+<div id="manualSection">
+
+
+<div class="card">
+
+
+<h2>All Street Lights</h2>
+
+
+<div class="buttons">
+
+
+<button id="allOn">
+💡 ALL ON
+</button>
+
+
+<button id="allOff">
+⚫ ALL OFF
+</button>
+
+
+</div>
+
+
+</div>
+
+
+
+
+
+<div class="card">
+
+
+<h2>Street Light 1</h2>
+
+
+<div class="buttons">
+
+
+<button id="light1On">
+💡 ON
+</button>
+
+
+<button id="light1Off">
+⚫ OFF
+</button>
+
+
+</div>
+
+
+</div>
+
+
+
+
+
+<div class="card">
+
+
+<h2>Street Light 2</h2>
+
+
+<div class="buttons">
+
+
+<button id="light2On">
+💡 ON
+</button>
+
+
+<button id="light2Off">
+⚫ OFF
+</button>
+
+
+</div>
+
+
+</div>
+
+
+</div>
+
+
+
+
+
+
+
+<!-- ================= Current Status ================= -->
+
+
+<div class="card">
+
+
+<h2>Current Status</h2>
+
+
+<p id="status">
+
+Waiting...
+
+</p>
+
+
+</div>
+
+
+
+
+
+
+<!-- ================= Live Sensor Status ================= -->
+
+
+<div class="card">
+
+
+<h2>Live Sensor Status</h2>
+
+
+<p id="sensorStatus">
+
+Waiting for Sensor Data...
+
+</p>
+
+
+</div>
+
+
+
+
+</div>
+
+
+
+<script type="module" src="dashboard.js"></script>
+
+
+</body>
+
+
+</html>
