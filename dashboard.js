@@ -4,52 +4,39 @@ import { onAuthStateChanged } from "https://www.gstatic.com/firebasejs/12.1.0/fi
 // ================= Authentication =================
 onAuthStateChanged(auth, (user) => {
     if (!user) {
-        alert("Please Login First");
         window.location.href = "index.html";
     }
 });
 
-// Firebase Document Reference
 const streetRef = doc(db, "streetLights", "control");
 
 // ================= BUTTONS =================
 const autoBtn = document.getElementById("autoBtn");
 const semiBtn = document.getElementById("semiBtn");
 const manualBtn = document.getElementById("manualBtn");
-
 const allOn = document.getElementById("allOn");
 const allOff = document.getElementById("allOff");
 
-// ================= SECTIONS =================
-const autoSection = document.getElementById("autoSection");
-const semiSection = document.getElementById("semiSection");
+// ================= SECTIONS & TEXT =================
 const manualSection = document.getElementById("manualSection");
 const status = document.getElementById("status");
 const sensorStatus = document.getElementById("sensorStatus");
 
-// Hide all sections initially
-autoSection.style.display = "none";
-semiSection.style.display = "none";
+// Hide manual section initially
 manualSection.style.display = "none";
 
 // ================= MODE SELECTION =================
 autoBtn.addEventListener("click", async () => {
-    autoSection.style.display = "block";
-    semiSection.style.display = "none";
     manualSection.style.display = "none";
     await updateDoc(streetRef, { mode: "Automatic" });
 });
 
 semiBtn.addEventListener("click", async () => {
-    autoSection.style.display = "none";
-    semiSection.style.display = "block";
     manualSection.style.display = "none";
     await updateDoc(streetRef, { mode: "Semi Automatic" });
 });
 
 manualBtn.addEventListener("click", async () => {
-    autoSection.style.display = "none";
-    semiSection.style.display = "none";
     manualSection.style.display = "block";
     await updateDoc(streetRef, { mode: "Manual" });
 });
@@ -68,24 +55,29 @@ onSnapshot(streetRef, (snapshot) => {
     const data = snapshot.data();
     if (!data) return;
 
-    // 1. Check for Emergency Override from Woman Safety App
+    // 1. Check for Emergency Override
     if (data.mode === "Emergency Override") {
-        status.innerHTML = "🚨 EMERGENCY OVERRIDE ACTIVE! <br><span style='color:red; font-size:14px;'>All lights forced ON for safety. Buzzer sounding.</span>";
-        autoSection.style.display = "none";
-        semiSection.style.display = "none";
+        status.innerHTML = "🚨 EMERGENCY OVERRIDE! <br><span style='color:red; font-size:14px;'>Lights Forced ON. Buzzer Active.</span>";
         manualSection.style.display = "none";
     } else {
-        // Normal Status display
-        status.innerHTML = `Current Mode: <b>${data.mode}</b>`;
+        // Show current mode
+        status.innerHTML = `Mode: <b>${data.mode}</b>`;
+        
+        // Ensure manual buttons only show in Manual mode
+        if (data.mode === "Manual") {
+            manualSection.style.display = "block";
+        } else {
+            manualSection.style.display = "none";
+        }
     }
 
-    // 2. Display Sensor Data
-    let environment = data.ldr1 ? "🌙 Night Detected" : "☀️ Day Detected";
-    let motion = data.motion ? "🚶 Motion Detected" : "🚫 No Motion";
+    // 2. Display Clean Sensor Data
+    let environment = data.ldr1 ? "🌙 Night" : "☀️ Day";
+    let motion = data.motion ? "🚶 Detected" : "🚫 None";
 
     sensorStatus.innerHTML = `
-        <b>☀️ LDR Sensor (Light)</b><br>${environment}
+        <b>LDR (Light):</b> ${environment}
         <br><br>
-        <b>🚶 PIR Sensor (Motion)</b><br>${motion}
+        <b>PIR (Motion):</b> ${motion}
     `;
 });
