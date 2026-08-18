@@ -1,48 +1,47 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
-
     <meta charset="UTF-8">
-
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
     <title>Smart Street Light</title>
-
-    <link rel="stylesheet" href="login.css">
-
+    <link rel="stylesheet" href="dashboard.css">
 </head>
-
 <body>
 
-<div class="login-card">
+<div class="container">
+    <h1>💡 Smart Street Light</h1>
 
-    <div class="logo">
-        💡
+    <!-- Mode Buttons -->
+    <div class="card">
+        <h2>Select Mode</h2>
+        <div class="buttons">
+            <button id="autoBtn">🌙 Auto</button>
+            <button id="semiBtn">⚡ Semi-Auto</button>
+            <button id="manualBtn">👨‍💻 Manual</button>
+        </div>
     </div>
 
-    <h1>Smart Street Light</h1>
+    <!-- Manual Controls (Hidden until Manual Mode is clicked) -->
+    <div class="card" id="manualSection">
+        <h2>Manual Controls</h2>
+        <div class="buttons">
+            <button id="allOn">💡 ON</button>
+            <button id="allOff">⚫ OFF</button>
+        </div>
+    </div>
 
+    <!-- Status & Live Data -->
+    <div class="card">
+        <h2>System Status</h2>
+        <p id="status" style="font-size: 18px; font-weight: bold; color: #1e3a8a;">Waiting...</p>
+    </div>
 
-    <input
-        type="email"
-        id="email"
-        placeholder="Enter Email">
-
-    <input
-        type="password"
-        id="password"
-        placeholder="Enter Password">
-
-    <button onclick="login()">
-
-        LOGIN
-
-    </button>
-
+    <div class="card">
+        <h2>Live Sensors</h2>
+        <p id="sensorStatus">Waiting for Data...</p>
+    </div>
 </div>
 
-<script type="module" src="login.js"></script>
+<script type="module" src="dashboard.js"></script>
 </body>
-
 </html>
