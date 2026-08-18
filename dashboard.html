@@ -1,69 +1,48 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
+
     <meta charset="UTF-8">
+
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Smart Street Light Dashboard</title>
-    <link rel="stylesheet" href="dashboard.css">
+
+    <title>Smart Street Light</title>
+
+    <link rel="stylesheet" href="login.css">
+
 </head>
+
 <body>
 
-<div class="container">
-    <h1>💡 Smart Street Light</h1>
-    <p class="subtitle">Control System & Safety Network</p>
+<div class="login-card">
 
-    <!-- Control Mode -->
-    <div class="card">
-        <h2>Select Mode</h2>
-        <div class="buttons">
-            <button id="autoBtn">🌙 Automatic Mode</button>
-            <button id="semiBtn">⚡ Semi Automatic Mode</button>
-            <button id="manualBtn">👨‍💻 Manual Mode</button>
-        </div>
+    <div class="logo">
+        💡
     </div>
 
-    <!-- Automatic Mode -->
-    <div class="card" id="autoSection">
-        <h2>Automatic Mode</h2>
-        <p><b>Strict Energy Saving</b></p><br>
-        <ul>
-            <li>Light turns ON only when it is <b>DARK</b> and <b>MOTION</b> is detected.</li>
-        </ul>
-    </div>
+    <h1>Smart Street Light</h1>
 
-    <!-- Semi Automatic Mode -->
-    <div class="card" id="semiSection">
-        <h2>Semi Automatic Mode</h2>
-        <p><b>Continuous Night Light</b></p><br>
-        <ul>
-            <li>Light turns ON automatically when it is <b>DARK</b> and stays ON continuously until morning.</li>
-            <li>Motion sensor is ignored.</li>
-        </ul>
-    </div>
 
-    <!-- Manual Mode -->
-    <div class="card" id="manualSection">
-        <h2>Manual Override</h2>
-        <p><b>Ignore all sensors. Control via dashboard.</b></p><br>
-        <div class="buttons">
-            <button id="allOn">💡 LIGHTS ON</button>
-            <button id="allOff">⚫ LIGHTS OFF</button>
-        </div>
-    </div>
+    <input
+        type="email"
+        id="email"
+        placeholder="Enter Email">
 
-    <!-- Current Status -->
-    <div class="card">
-        <h2>System Status</h2>
-        <p id="status" style="font-size: 18px; font-weight: bold;">Waiting...</p>
-    </div>
+    <input
+        type="password"
+        id="password"
+        placeholder="Enter Password">
 
-    <!-- Live Sensor Status -->
-    <div class="card">
-        <h2>Live Sensor Data</h2>
-        <p id="sensorStatus">Waiting for Sensor Data...</p>
-    </div>
+    <button onclick="login()">
+
+        LOGIN
+
+    </button>
+
 </div>
 
-<script type="module" src="dashboard.js"></script>
+<script type="module" src="login.js"></script>
 </body>
+
 </html>
